@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>Factura</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=60mm, initial-scale=1.0"> <!-- Cambiar el ancho de la vista para el papel de 58mm -->
+    <title>Ticket de Compra</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .container { width: 400px; margin: auto; border: 1px solid #000; padding: 20px; }
-        .section { margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #000; padding: 5px; text-align: center; }
-        .header, .footer { text-align: center; }
-        .highlight { font-weight: bold; }
+     body {
+            font-family: tahoma, Helvetica, sans-serif;
+            margin: 0;
+            font-size: 3mm;
+            text-align: center; /* Centrar todo el contenido */
+        }
+
+        #thermal-pos {
+           
+            margin: none;
+            max-width: 60mm;
+            
+        }
+
+        .label {
+            margin: 0;
+            margin-left: 0.5mm;
+        }
+
+        .table {
+          
+            border-collapse: collapse; /* Elimina el espacio entre celdas */
+            border-collapse: collapse;
+            border-spacing: 0;
+            
+        }
+
+        .table-header h2 {
+            margin: 0;
+            padding-left: 0.5mm;
+            
+        }
+        .table-footer.top-line td,
+        
+        .table-footer {
+            margin-left: 0.5mm;
+        }
+        .table-footer h2 {
+            margin: 0; /* Asegurarte de que no haya margen dentro de los elementos h2 */
+            padding: 1mm 0; /* Ajustar el padding superior e inferior */
+        }
+        .table-footer h4 {
+            margin: 0; /* Asegurarte de que no haya margen dentro de los elementos h2 */
+            padding: 1mm 0; /* Ajustar el padding superior e inferior */
+        }
+        .saldo-text {
+            margin: 0;
+            margin-left: 0.1mm;
+        }
+
+        .policy {
+            margin-left: 0.5mm;
+        }
+
+      /* Agrega el estilo para eliminar el espacio vertical en las celdas de las filas de la tabla */
+      .table-footer td {
+          padding: 0;
+          line-height: 1;
+      }
+      .nro_boleta {
+        margin: 0;
+        padding: 0;
+    }
+    .nro_mesa {
+        margin: 0;
+    }
+    .fecha_recepcion {
+        margin: 0;
+    }
+    
+    .info-tienda {
+        margin: 0;
+    }
+    .m-0 {
+        margin: 0;
+    }
+    .direccion {
+        margin: 0;
+        
+    }
+  
+
     </style>
-</head>
-<body>
-	<script>
+  </head>
+  <body >
+
+    <script>
         //onload="window.print()" onfocus="window.close()"
         // Obtener los parámetros de la URL
         const params = new URLSearchParams(window.location.search);
@@ -66,7 +144,24 @@
             };
         });
     </script>
-    
+    <div id="thermal-pos">
+  <div class="label">
+                         
+            
+            
+            <p class="info-tienda">
+            
+                <br>
+          
+  </div>
+        
+        <div class="label">
+            <h2 class="nro_boleta" id="nro_boleta_id" ></h2>
+            CLIENTE:
+            <h3 class="nro_mesa" id="nro_mesa_id" ></h3>
+            VENDEDOR:
+            <h3 class="direccion" id="nro_direccion_id" ></h3>
+        </div>
         <div class="label">
             <p class="fecha_recepcion">
                 FECHA DE RECEPCION:
@@ -77,68 +172,78 @@
 
         </div>
 
-
-
-
-        </div>
-    <div class="container">
-<div class="fecha_recepcion">
-            <p>PRESUPUESTO Nº: 000-031</p>
-            	        <div class="label"><b id="fechaR"></b>
-			<b span id="hora"></b>
-            <hr>
-            <p>CLIENTE: CONSUMIDOR FINAL</p>
-            <p>VENDEDOR: MARCELO</p>
-            <hr>
-  </div>
+        <!-- <div class="line">***********************************************</div> -->
         
-        <div class="section">
-            <p class="highlight">ARTÍCULOS</p>
-            <table>
-                <tr>
-                    <th>CANT.</th>
-                    <th>ARTÍCULO</th>
-                    <th>IMP. UNI.</th>
-                    <th>IMP. TOTAL</th>
+   
+        <table class="table">
+            <tbody id="tablaBody">
+                <tr class="table-header" >
+                    <th><h5>Cant</h5></th>
+                    <th><h5>Descripción</h5></th>
+                    <th><h5>P.Unitario</h5></th>
+                    <th><h5>Total</h5></th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>J5 PRIME</td>
-                    <td>$ 33.500</td>
-                    <td>$ 33.500</td>
+                <script>
+                    /*var result = [
+                        { cantidad: 3, descripcion: "hamburguesa doble carne", precio_unit: 10000 },
+                        { cantidad: 5, descripcion: "Perro mas gaseosa y de todo", precio_unit: 20000 },
+                        // ... otros objetos en el array
+                    ];*/
+
+                    var tablaBody = document.getElementById("tablaBody");
+
+                    result.forEach(function(row) {
+                    var newRow = document.createElement("tr");
+                    newRow.className = "table-item";
+
+                    newRow.innerHTML = `
+                        <td class="item">${row.cantidad}</td>
+                        <td class="item">${row.descripcion}</td>
+                        <td class="item">${row.precio_unit}</td>
+                        <td class="item">${row.precio_unit2}</td>
+                    `;
+                    tablaBody.appendChild(newRow);
+                    });
+                    // Agrega una fila adicional con un espacio
+                    var spaceRow = document.createElement("tr");
+                    spaceRow.innerHTML = `<td colspan="3">&nbsp;</td>`;
+                    tablaBody.appendChild(spaceRow);
+
+                </script>
+                <!-- 
+                <tr class="table-footer top-line">
+                    <td class=""  colspan="2" id="propincell"><h4>Propina Sugerida:</h4></td>
+                    <td colspan="2"><h4 id="propina"></h4></td>
                 </tr>
-            </table>
-            <p>1 PRODUCTO - $ 33.500</p>
-        </div>
-        
-        <div class="section">
-            <p class="highlight">PAGOS</p>
-            <table>
-                <tr>
-                    <th>FORMA PAGO</th>
-                    <th>IMPORTE</th>
-                    <th>RECARGO</th>
-                    <th>IMP. FINAL</th>
+                <tr class="table-footer top-line">
+                    <td class=""  colspan="2" id="domicilioCell"><h4>DOMICILIO:</h4></td>
+                    <td colspan="2"><h4 id="domi"></h4></td>
                 </tr>
-                <tr>
-                    <td>EFECTIVO</td>
-                    <td>$ 33.500</td>
-                    <td>$ 0</td>
-                    <td>$ 33.500</td>
+               -->
+                
+                <tr class="table-footer top-line">
+                    <td class=""  colspan="2"><h2>TOTAL:</h2></td>
+                    <td colspan="2"><h2 id="total"></h2></td>
                 </tr>
-                <tr>
-                    <td colspan="3">TOTAL</td>
-                    <td>$ 33.500</td>
-                </tr>
-            </table>
-        </div>
-        
-        <div class="footer">
-            <p>PRODUCTO DENTRO Y DE LOS 30 DÍAS ESTANDO EN PERFECTAS CONDICIONES CON FILM Y SELLOS DE LA EMPRESA</p>
-        </div>
-    </div>
+            </tbody>
+        </table>
+        <br/>
+        <p class="saldo-text">
+            <b><span class="estado-deuda" id="estado"></span></b>
+        </p>
+        <p class="policy-title">
+            <b>IMPORTANTE:</b>
+        </p>
+    
+        <p class="m-0">
+           PRODUCTO DENTRO Y DE LOS 30 DIAS
+           <br<div class="policy">
+            ESTANDO EN PERFECTAS CONDICIONES CON EL FILM Y SELLO DE LA EMPRESA
+        </p>
 		
-		<script>
+		
+		
+    <script>
         var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
         var nroMesaElement = document.getElementById("nro_mesa_id").textContent = nro_mesa;
         var nroDireccion = document.getElementById("nro_direccion_id").textContent = direc;
@@ -174,4 +279,3 @@
         var estadoElement = document.getElementById("estado").textContent = estado;
     </script>
 </body>
-</html>
