@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 400px; margin: auto; border: 1px solid #000; padding: 20px; }
+        .section { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 5px; text-align: center; }
+        .header, .footer { text-align: center; }
+        .highlight { font-weight: bold; }
+    </style>
+</head>
+<body>
+	<script>
+        //onload="window.print()" onfocus="window.close()"
+        // Obtener los parámetros de la URL
+        const params = new URLSearchParams(window.location.search);
+
+        // Obtener los valores de los parámetros
+        var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
+        var nro_mesa = params.has('mesa') ? params.get('mesa') : "---";
+        var direc = params.has('direccion') ? params.get('direccion') : "---";
+        
+
+        var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa";
+        var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "";
+        var domi = params.has('domi') ? params.get('domi') : "N/A";
+        var propina = params.has('propina') ? params.get('propina') : "N/A";
+
+        var total = params.has('total') ? params.get('total') : "";
+        var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
+        var descuento = params.has('descuento') ? params.get('descuento') : " ";
+        var estado = params.has('estado') ? params.get('estado') : "--";
+
+        //Recibe los datos de los servicios (separados por comas)
+        var cantidades = params.has('cantidades') ? params.get('cantidades') : "0";
+        var descripciones = params.has('servicios') ? params.get('servicios') : "No hay articulos";
+        var p_units = params.has('p_unit') ? params.get('p_unit') : "0.00";
+        var p_units2 = params.has('p_unit2') ? params.get('p_unit2') : "0.00";
+        
+        //Formato de 2 decimales
+        propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        domi = parseFloat(domi).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        
+        //crea una lista de cada columna a partir de las comas.
+        cantidades = cantidades.split(",");
+        descripciones = descripciones.split(","); 
+        p_units = p_units.split(",");
+        p_units2 = p_units2.split(",");
+
+        //Crea una lista para mostrar en cada fila de la tabla
+        var result = [];
+
+        cantidades.forEach(function(value, id) {
+            result[id] = {
+                cantidad: cantidades[id],
+                descripcion: descripciones[id], // + " " + detalles[id], // Descomenta si deseas concatenar la descripción con el detalle
+                precio_unit: parseFloat(p_units[id]).toLocaleString('es-ES', { minimumFractionDigits: 0 }),
+                precio_unit2: parseFloat(p_units2[id]).toLocaleString('es-ES', { minimumFractionDigits: 0 }),
+            };
+        });
+    </script>
+    
+    <div class="container">
+        <div class="fecha_recepcion">
+            <p>PRESUPUESTO Nº: 000-031</p>
+            <p>31/10/2024 14:01:37</p>
+			<b id="fechaR"></b>
+			<b span id="hora"></b>
+            <hr>
+            <p>CLIENTE: CONSUMIDOR FINAL</p>
+            <p>VENDEDOR: MARCELO</p>
+            <hr>
+        </div>
+        
+        <div class="section">
+            <p class="highlight">ARTÍCULOS</p>
+            <table>
+                <tr>
+                    <th>CANT.</th>
+                    <th>ARTÍCULO</th>
+                    <th>IMP. UNI.</th>
+                    <th>IMP. TOTAL</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>J5 PRIME</td>
+                    <td>$ 33.500</td>
+                    <td>$ 33.500</td>
+                </tr>
+            </table>
+            <p>1 PRODUCTO - $ 33.500</p>
+        </div>
+        
+        <div class="section">
+            <p class="highlight">PAGOS</p>
+            <table>
+                <tr>
+                    <th>FORMA PAGO</th>
+                    <th>IMPORTE</th>
+                    <th>RECARGO</th>
+                    <th>IMP. FINAL</th>
+                </tr>
+                <tr>
+                    <td>EFECTIVO</td>
+                    <td>$ 33.500</td>
+                    <td>$ 0</td>
+                    <td>$ 33.500</td>
+                </tr>
+                <tr>
+                    <td colspan="3">TOTAL</td>
+                    <td>$ 33.500</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>PRODUCTO DENTRO Y DE LOS 30 DÍAS ESTANDO EN PERFECTAS CONDICIONES CON FILM Y SELLOS DE LA EMPRESA</p>
+        </div>
+    </div>
+</body>
+</html>
