@@ -67,26 +67,30 @@
         });
     </script>
     
-
-
-        </div>
-    <div class="container">
-        <div class="fecha_recepcion">
-            <p>PRESUPUESTO Nº: 000-031</p>
-            	        <div class="label">
+        <div class="label">
             <p class="fecha_recepcion">
                 FECHA DE RECEPCION:
                 <br>
                 <b id="fechaR"></b>
                 <b span id="hora"></b>
             </p>
-			<b id="fechaR"></b>
+
+        </div>
+
+
+
+
+        </div>
+    <div class="container">
+<div class="fecha_recepcion">
+            <p>PRESUPUESTO Nº: 000-031</p>
+            	        <div class="label"><b id="fechaR"></b>
 			<b span id="hora"></b>
             <hr>
             <p>CLIENTE: CONSUMIDOR FINAL</p>
             <p>VENDEDOR: MARCELO</p>
             <hr>
-        </div>
+  </div>
         
         <div class="section">
             <p class="highlight">ARTÍCULOS</p>
@@ -133,5 +137,41 @@
             <p>PRODUCTO DENTRO Y DE LOS 30 DÍAS ESTANDO EN PERFECTAS CONDICIONES CON FILM Y SELLOS DE LA EMPRESA</p>
         </div>
     </div>
+		
+		<script>
+        var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
+        var nroMesaElement = document.getElementById("nro_mesa_id").textContent = nro_mesa;
+        var nroDireccion = document.getElementById("nro_direccion_id").textContent = direc;
+
+
+        var fechaElement = document.getElementById("fechaR").textContent = fecha;
+        var fecha_entregaElement = document.getElementById("hora").textContent = fecha_entrega;
+
+        /*const propinaCell = document.getElementById("propinaCell");
+        var propinaElement = document.getElementById("propina");
+                    // Verifica si domi es igual a "N/A"
+            if (propina == "NaN") {
+                    // Si domi es "N/A", oculta el elemento <td> que contiene la etiqueta y el valor
+                propinaCell.style.display = "none";
+            } else {
+             // Si domi no es "N/A", muestra el valor en el elemento <h2>
+             propinaElement.textContent = propina;
+            }  
+
+        const domicilioCell = document.getElementById("domicilioCell");
+        var domiElement = document.getElementById("domi");
+                    // Verifica si domi es igual a "N/A"
+            if (domi == "NaN") {
+                    // Si domi es "N/A", oculta el elemento <td> que contiene la etiqueta y el valor
+                domicilioCell.style.display = "none";
+            } else {
+             // Si domi no es "N/A", muestra el valor en el elemento <h2>
+             domiElement.textContent = domi;
+            }       */
+        var totalElement = document.getElementById("total").textContent = `$${total}`;
+        var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
+        var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
+        var estadoElement = document.getElementById("estado").textContent = estado;
+    </script>
 </body>
 </html>
