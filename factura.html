@@ -165,7 +165,7 @@
 
         
 		
-        <div class="label">
+  <div class="label">
             <a class="nro_boleta" id="nro_boleta_id" ></a>
 			
 			******************************************<br>
@@ -213,7 +213,7 @@
                     });
                     // Agrega una fila adicional con un espacio
                     var spaceRow = document.createElement("tr");
-                    spaceRow.innerHTML = `<td colspan="3">&nbsp;</td>`;
+                    spaceRow.innerHTML = `<td colspan="2"></td>`;
                     tablaBody.appendChild(spaceRow);
 
                 </script>
@@ -228,23 +228,31 @@
                 </tr>
                -->
                 
-                <tr class="table-footer top-line">
-                    <td class=""  colspan="2"><h3>TOTAL:</h3></td>
-                    <td colspan="2"><h3 id="total"></h3></td>
-                </tr>
+                
             </tbody>
         </table>
 				
 
-				
+
 				
 
         <br/>
         <p class="saldo-text">
             <b><span class="estado-deuda" id="estado"></span></b>
-        </p>
-        <p class="policy-title">
-            <b>IMPORTANTE:</b>
+
+        <table width="260" border="1" cellspacing="0" class="table">
+          <tbody>
+            <tr>
+              <td bgcolor="#E1E1E1"><h3>TOTAL A PAGAR</h3></td>
+              <td><h3 id="total"></h3></td>
+                   
+				
+				
+				
+            </tr>
+          </tbody>
+        </table>
+        <p class="policy-title"><b>IMPORTANTE:</b>
         </p>
     
         <p class="m-0">
