@@ -145,46 +145,50 @@
         });
     </script>
     <div id="thermal-pos">
-  <div class="label">
-                         
+  <div class="label">      
             
-            
-            <p class="info-tienda">
+    <p class="info-tienda">
             
                 <br>
           
   </div>
         
-        <div class="label">
-            <h2 class="nro_boleta" id="nro_boleta_id" ></h2>
-			
-			            <p class="fecha_recepcion">
-                FECHA DE RECEPCION:
-                <br>
+		        <div class="label">
+            <h3 class="nro_boleta" id="nro_boleta_id" ></h3>
+		
+		</div>
+		        <div class="label">
+            <a class="fecha_recepcion">
                 <b id="fechaR"></b>
                 <b span id="hora"></b>
-            </p>
-			
-            CLIENTE:
-            <h3 class="nro_mesa" id="nro_mesa_id" ></h3>
-            VENDEDOR:
-            <h3 class="direccion" id="nro_direccion_id" ></h3>
-        </div>
+            
+
+        
+		
         <div class="label">
-
-
+            <a class="nro_boleta" id="nro_boleta_id" ></a>
+			
+			***************************************
+            CLIENTE:
+            <a class="nro_mesa" id="nro_mesa_id"></a>
+			<br>
+            VENDEDOR:
+            <a class="direccion" id="nro_direccion_id" ></a>
         </div>
 
-        <!-- <div class="line">***********************************************</div> -->
+		
+		
+
+			***************************************
         
    
-        <table class="table">
+  <table width="240" border="1" class="table">
             <tbody id="tablaBody">
                 <tr class="table-header" >
-                    <th><h5>Cant</h5></th>
-                    <th><h5>Descripción</h5></th>
-                    <th><h5>P.Unitario</h5></th>
-                    <th><h5>Total</h5></th>
+                    <th><pre>CANT.</pre></th>
+                    <th><pre>ARTÍCULO</pre></th>
+                    <th><pre>IMP. UNI.</pre></th>
+                    <th><pre>IMP. TOTAL</pre></th>
                 </tr>
                 <script>
                     /*var result = [
@@ -225,11 +229,16 @@
                -->
                 
                 <tr class="table-footer top-line">
-                    <td class=""  colspan="2"><h2>TOTAL:</h2></td>
-                    <td colspan="2"><h2 id="total"></h2></td>
+                    <td class=""  colspan="2"><h3>TOTAL:</h3></td>
+                    <td colspan="2"><h3 id="total"></h3></td>
                 </tr>
             </tbody>
         </table>
+				
+
+				
+				
+
         <br/>
         <p class="saldo-text">
             <b><span class="estado-deuda" id="estado"></span></b>
