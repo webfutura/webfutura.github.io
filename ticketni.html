@@ -109,6 +109,7 @@
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
         var total = params.has('total') ? params.get('total') : "";
+		var totalrr = params.has('totalrr') ? params.get('totalrr') : "";
 		var totalr = params.has('totalr') ? params.get('totalr') : "";
         var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
@@ -226,7 +227,13 @@
                 
             </tbody>
 	  
+	  
 	                  <tr class="table-footer top-line">
+                    <td class=""  colspan="2" id="domicilioCell"><h4>SUBTOTAL:</h4></td>
+                    <td colspan="2"><h4 id="totalrr"></h4></td>
+                </tr>
+	                  <tr class="table-footer top-line">
+				
                     <td class=""  colspan="2" id="propincell"><h4>RECARGO:</h4></td>
                     <td colspan="2"><h4 id="totalr"></h4></td>
                 </tr>
@@ -294,6 +301,7 @@
              domiElement.textContent = domi;
             }       */
         var totalElement = document.getElementById("total").textContent = `$${total}`;
+		var totalrrElement = document.getElementById("totalrr").textContent = `$${totalrr}`;
 		var totalrElement = document.getElementById("totalr").textContent = `$${totalr}`;
         var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
         var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
