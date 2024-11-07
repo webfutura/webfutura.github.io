@@ -109,6 +109,7 @@
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
         var total = params.has('total') ? params.get('total') : "";
+		var totalr = params.has('totalr') ? params.get('totalr') : "";
         var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
@@ -123,6 +124,7 @@
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         domi = parseFloat(domi).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+		totalr = parseFloat(totalr).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         
@@ -218,29 +220,26 @@
 
                 </script>
                 
-                <tr class="table-footer top-line">
-                    <td class=""  colspan="2" id="domicilioCell"><h4>RECARGO:</h4></td>
-                    <td colspan="2"><h4 id="domi"></h4></td>
-                </tr>
+
               
                 
                 
             </tbody>
 	  
+	                  <tr class="table-footer top-line">
+                    <td class=""  colspan="2" id="propincell"><h4>RECARGO:</h4></td>
+                    <td colspan="2"><h4 id="totalr"></h4></td>
+                </tr>
 	  
+           
 	  
         </table>
 				
-			
 					
-				
-
-				
 
         <br/>
         <p class="saldo-text">
-            <b><span class="estado-deuda" id="estado"></span></b>
-
+           
         <table width="260" border="1" cellspacing="0" class="table">
           <tbody>
             <tr>
@@ -295,6 +294,7 @@
              domiElement.textContent = domi;
             }       */
         var totalElement = document.getElementById("total").textContent = `$${total}`;
+		var totalrElement = document.getElementById("totalr").textContent = `$${totalr}`;
         var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
         var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
         var estadoElement = document.getElementById("estado").textContent = estado;
