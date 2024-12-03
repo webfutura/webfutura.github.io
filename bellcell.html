@@ -109,6 +109,8 @@
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
         var total = params.has('total') ? params.get('total') : "";
+		var totalrr = params.has('totalrr') ? params.get('totalrr') : "";
+		var totalr = params.has('totalr') ? params.get('totalr') : "";
         var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
@@ -123,6 +125,7 @@
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         domi = parseFloat(domi).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+		totalr = parseFloat(totalr).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         
@@ -145,43 +148,51 @@
         });
     </script>
     <div id="thermal-pos">
-  <div class="label">
-                         
+  <div class="label">      
             
-            
-            <p class="info-tienda">
+    <p class="info-tienda">
             
                 <br>
-          <h1>&nbsp;</h1>
+          
   </div>
-        
-        <div class="label">
-            <h2 class="nro_boleta" id="nro_boleta_id" ></h2>
-            CLIENTE:
-            <h3 class="nro_mesa" id="nro_mesa_id" ></h3>
-            VENDEDOR:
-            <h3 class="direccion" id="nro_direccion_id" ></h3>
-        </div>
-        <div class="label">
-            <p class="fecha_recepcion">
-                FECHA DE RECEPCION:
-                <br>
+      <br>  
+<p class="nro_boleta"><b></b>
+		        <div class="label">
+            <h3 class="nro_boleta" id="nro_boleta_id" ></h3>
+		
+		</div>
+		        <div class="label">
+            <a class="fecha_recepcion">
                 <b id="fechaR"></b>
                 <b span id="hora"></b>
-            </p>
+            
 
+        
+		
+  <div class="label">
+            <a class="nro_boleta" id="nro_boleta_id" ></a>
+			
+			******************************************<br>
+            CLIENTE:
+            <a class="nro_mesa" id="nro_mesa_id"></a>
+			<br>
+            VENDEDOR:
+            <a class="direccion" id="nro_direccion_id" ></a>
         </div>
 
-        <!-- <div class="line">***********************************************</div> -->
+		
+		
+
+			******************************************
         
    
-        <table class="table">
+  <table width="260" border="1" class="table">
             <tbody id="tablaBody">
                 <tr class="table-header" >
-                    <th><h5>Cant</h5></th>
-                    <th><h5>Descripción</h5></th>
-                    <th><h5>P.Unitario</h5></th>
-                    <th><h5>Total</h5></th>
+                    <th bgcolor="#E9E9E9"><pre>CANT.</pre></th>
+                  <th width="130" bgcolor="#E9E9E9"><pre>ARTÍCULO</pre></th>
+                    <th bgcolor="#E9E9E9"><pre>IMP. UNI.</pre></th>
+                    <th bgcolor="#E9E9E9"><pre>IMP. TOTAL</pre></th>
                 </tr>
                 <script>
                     /*var result = [
@@ -206,33 +217,50 @@
                     });
                     // Agrega una fila adicional con un espacio
                     var spaceRow = document.createElement("tr");
-                    spaceRow.innerHTML = `<td colspan="3">&nbsp;</td>`;
+                    spaceRow.innerHTML = `<td colspan="2"></td>`;
                     tablaBody.appendChild(spaceRow);
 
                 </script>
-                <!-- 
-                <tr class="table-footer top-line">
-                    <td class=""  colspan="2" id="propincell"><h4>Propina Sugerida:</h4></td>
-                    <td colspan="2"><h4 id="propina"></h4></td>
-                </tr>
-                <tr class="table-footer top-line">
-                    <td class=""  colspan="2" id="domicilioCell"><h4>DOMICILIO:</h4></td>
-                    <td colspan="2"><h4 id="domi"></h4></td>
-                </tr>
-               -->
                 
-                <tr class="table-footer top-line">
-                    <td class=""  colspan="2"><h2>TOTAL:</h2></td>
-                    <td colspan="2"><h2 id="total"></h2></td>
-                </tr>
+
+              
+                
+                
             </tbody>
+	  
+	  
+	                  <tr class="table-footer top-line">
+                    <td class=""  colspan="2" id="domicilioCell"><h4>SUBTOTAL:</h4></td>
+                    <td colspan="2"><h4 id="totalrr"></h4></td>
+                </tr>
+	                  <tr class="table-footer top-line">
+				
+                    <td class=""  colspan="2" id="propincell"><h4>RECARGO:</h4></td>
+                    <td colspan="2"><h4 id="totalr"></h4></td>
+                </tr>
+	  
+           
+	  
         </table>
+				
+					
+
         <br/>
         <p class="saldo-text">
-            <b><span class="estado-deuda" id="estado"></span></b>
-        </p>
-        <p class="policy-title">
-            <b>IMPORTANTE:</b>
+           
+        <table width="260" border="1" cellspacing="0" class="table">
+          <tbody>
+            <tr>
+              <td bgcolor="#E1E1E1"><h3>TOTAL A PAGAR</h3></td>
+              <td><h3 id="total"></h3></td>
+                   
+				
+				
+				
+            </tr>
+          </tbody>
+        </table>
+        <p class="policy-title"><b>IMPORTANTE:</b>
         </p>
     
         <p class="m-0">
@@ -240,74 +268,7 @@
            <br<div class="policy">
             ESTANDO EN PERFECTAS CONDICIONES CON EL FILM Y SELLO DE LA EMPRESA
         </p>
-
-   </div>
-    <div class="container">
-<div class="fecha_recepcion">
-            <p>PRESUPUESTO Nº: 000-031</p>
-            	        <div class="label"><b id="fechaR"></b>
-			<b span id="hora"></b>
-            <hr>
-            <p>CLIENTE: CONSUMIDOR FINAL</p>
-            <p>VENDEDOR: MARCELO</p>
-            <hr>
-  </div>
-	
-	        <div class="label">
-            <p class="fecha_recepcion">
-                FECHA DE RECEPCION:
-                <br>
-                <b id="fechaR"></b>
-                <b span id="hora"></b>
-            </p>
-
-        </div>
-        
-        <div class="section">
-            <p class="highlight">ARTÍCULOS</p>
-            <table>
-                <tr>
-                    <th>CANT.</th>
-                    <th>ARTÍCULO</th>
-                    <th>IMP. UNI.</th>
-                    <th>IMP. TOTAL</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>J5 PRIME</td>
-                    <td>$ 33.500</td>
-                    <td>$ 33.500</td>
-                </tr>
-            </table>
-            <p>1 PRODUCTO - $ 33.500</p>
-        </div>
-        
-        <div class="section">
-            <p class="highlight">PAGOS</p>
-            <table>
-                <tr>
-                    <th>FORMA PAGO</th>
-                    <th>IMPORTE</th>
-                    <th>RECARGO</th>
-                    <th>IMP. FINAL</th>
-                </tr>
-                <tr>
-                    <td>EFECTIVO</td>
-                    <td>$ 33.500</td>
-                    <td>$ 0</td>
-                    <td>$ 33.500</td>
-                </tr>
-                <tr>
-                    <td colspan="3">TOTAL</td>
-                    <td>$ 33.500</td>
-                </tr>
-            </table>
-        </div>
-        
-        <div class="footer">
-            <p>PRODUCTO DENTRO Y DE LOS 30 DÍAS ESTANDO EN PERFECTAS CONDICIONES CON FILM Y SELLOS DE LA EMPRESA</p>
-        </div>
-    </div>
+		
 		
 		
     <script>
@@ -341,8 +302,17 @@
              domiElement.textContent = domi;
             }       */
         var totalElement = document.getElementById("total").textContent = `$${total}`;
+		var totalrrElement = document.getElementById("totalrr").textContent = `$${totalrr}`;
+		var totalrElement = document.getElementById("totalr").textContent = `$${totalr}`;
         var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
         var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
         var estadoElement = document.getElementById("estado").textContent = estado;
     </script>
 </body>
+					
+					    <script>
+      window.onload = function(){
+        window.print();
+      }
+    </script>
+					</html>
